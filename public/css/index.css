@@ -1,0 +1,389 @@
+html, body {
+	height: 95%;
+}
+
+
+@font-face {
+	font-family: 'myIcons';
+	src:url('../fonts/icomoon.eot');
+	src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.svg#icomoon') format('svg'),
+		url('../fonts/icomoon.woff') format('woff'),
+		url('../fonts/icomoon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+body{	
+    font-family:Calibri, sans-serif;
+    background:rgb(165, 168, 161);
+    /*width:100%;*/
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.flex-container {
+    display: none;
+    /*display: flex;*/
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: flex-start;
+
+    margin-top: 50px;
+}
+
+.toppanel {	
+    position:fixed;
+    width:100%;
+    background:#2F343B;
+    /*color:#E3CDA4;*/
+    color: white;
+    top:0px;
+    left:0px;
+    height: 50px;
+
+    z-index: 3;
+}
+
+.game-toppanel {
+    display: none;
+    /*display: flex;*/
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.login-toppanel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.leftpanel {
+    padding:1ex;
+    /*width: 100%;*/
+    background:#2F343B;
+    margin-top: 1ex;
+    /*color:#E3CDA4;*/
+    color: white;
+}
+
+.gameboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding:1ex;
+    margin-top: 1ex;
+    background: white;
+    height: 400px;
+    /*
+    width: 500px;
+    */
+}
+
+.endgame {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background: white;
+    height: 400px;
+}
+
+.rightpanel {
+    margin-top:1ex;
+    padding:1ex;
+    /*background: blue;*/
+    background:#2F343B;
+    /*color:#E3CDA4;*/
+    color: white;
+
+    transition: right 1s;
+	-moz-transition: right 1s; /* Firefox 4 */
+	-webkit-transition: right 1s; /* Safari and Chrome */
+	-o-transition: right 1s; /* Opera */
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+th {
+    background:rgba(255,255,255,.3);
+}
+td {
+    background:rgba(255,255,255,.2);
+}
+
+.payofftable th,td {
+    min-width: 55px;
+}
+/*
+.payofftable tr:nth-child(2n) {
+    background:rgba(255,255,255,.3);
+}
+.payofftable tr:nth-child(2n-1) {
+    background:rgba(255,255,255,.2);
+}
+*/
+
+.gamebuttons {
+    display: flex;
+    justify-content: center;
+}
+
+.button
+{	cursor:pointer;
+    margin: 1ex;
+	padding:1ex;
+	background:rgb(74, 37, 240);
+	outline:1px solid rgba(71, 227, 233, 0);
+	color:rgba(238,236,225,1);
+    font: 1em "Century Gothic" ,sans-serif;
+}
+
+.button .icon{	
+    font-family:"myIcons"; 
+    padding: 8px;
+}
+
+
+.button:hover{	
+    background:rgba(47,144,254,.8);
+    outline:2px solid rgba(255,255,255,1);
+}
+.button:active{	
+    background:rgba(47,144,254,1);
+    outline:0px solid rgba(255,255,255,1);
+}
+
+.card {
+    margin: 1ex;
+    width: 150px;
+    height: 200px;
+    background-color: brown;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.problem {
+    display: flex;
+    flex-wrap: wrap;
+
+    max-width: 515px;
+    color: white;
+}
+
+
+.scoretable th,td {
+    width: 50px;
+}
+
+
+.scoretable tr:nth-child(2n) {
+    background:rgba(255,255,255,.2);
+}
+.scoretable tr:nth-child(2n-1) {
+    background:rgba(255,255,255,.4);
+}
+
+.round {
+    color: yellow;
+}
+
+/*
+.interscoretable tr:nth-child(2n) {
+    background:rgba(255,255,255,.1);
+}
+.interscoretable tr:nth-child(2n-1) {
+    background:rgba(255,255,255,.2);
+}
+*/
+
+.button.login {
+    margin-left:0px;
+    width: 35px;
+}
+
+
+/* for gui_2.html */
+.cardcontainer {
+    width: 120px;
+    height: 200px;
+    margin: 1ex;
+
+    display: none;
+}
+
+.playercard {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+    /*background-color: yellow;*/
+    color: white;
+
+    text-align: center;
+}
+
+.frontside {
+    position: absolute;
+    width: 100%;
+    height:100%;
+    backface-visibility: hidden;
+    background: brown;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.backside {
+    position: absolute;
+    width: 100%;
+    height:100%;
+    backface-visibility: hidden;
+    background: teal;
+    transform: rotateY(180deg);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.playercard.isflipped {
+    transform: rotateY(180deg);
+}
+
+
+/*for login */
+.login-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+    /*background-color: red;*/
+    margin-top: 50px;
+
+
+    height: 100%;
+}
+
+.login-container > section {
+    margin-top:1ex;
+    padding:1ex;
+    /*background: blue;*/
+    background:#2F343B;
+    /*color:#E3CDA4;*/
+    color: white;
+
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-container > section:nth-child(2), .login-container > section:nth-child(3) {
+    display: none;
+}
+
+.alert {
+    display: none;
+    color: red;
+}
+
+.room-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.room-browser {
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+    /*background-color: red;*/
+    margin-top: 50px;
+
+
+    height: 100%;
+}
+
+.room-browser > section {
+    margin-top:1ex;
+    padding:1ex;
+   
+    color: white;
+
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#turn {
+    color: purple;
+}
+
+
+/* for mobile */
+
+@media only screen and (max-width: 800px) {
+    /*
+	.rightpanel
+	{	
+        
+        display: none;
+    }
+
+    .leftpanel {
+        display: none;
+    }
+    */
+
+    
+    .flex-container > div:nth-child(1) {
+        order: 1;
+    }
+    .flex-container > div:nth-child(2) {
+        order: 2;    
+    }
+    .flex-container > div:nth-child(3) {
+        order: 3;
+    }
+
+    .flex-container {
+        
+        justify-content: center;
+        align-items: center;        
+        flex-direction: column;
+    }
+
+    .scoretable th,td {
+        width: 80px;
+    }
+
+    .payofftable th,td {
+        width: 60px;
+    }
+
+}

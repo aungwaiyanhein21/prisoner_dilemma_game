@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Prisoners' Dilemma Game</title>
+        <meta charset="UTF_8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+        <link rel="stylesheet" href="css/index.css">
+        <script src="/socket.io/socket.io.js"></script> 
+
+        <script src="js/renderer.js"></script>
+        <script src="js/clientConnectionManager.js"></script>
+        <script src="js/clientApp.js"></script>
+
+        <script src="js/player.js"></script>
+        <script src="js/board.js"></script>
+        
+        <script src="js/game.js"></script>
+
+    </head>
+    <body onload="clientConnectionManager.init()">
+        <div class="toppanel">
+            <section class="game-toppanel">
+                <span class="button" onclick="clientConnectionManager.requestLeaveRoom()">
+                    <span class="icon">G</span>
+                </span> 
+                <span>
+                    <p id="timer"></p>
+                </span>
+                <a href="rules.html" target="_blank">
+                    <span class="button">
+                        Rules
+                    <!--<a href="rules.html" target="_blank">Rules</a>-->
+                    </span>
+                </a>
+            </section>
+            <section class="login-toppanel">
+                <span>
+                </span> 
+                <span>
+                    <h1>Prisoners' Dilemma Game</h1>
+                </span>
+                <span>
+                </span>
+            </section>
+        </div>
+        
+        <div class="flex-container">
+            <div>
+                <section class="leftpanel">
+                    <h2>Scores</h2>
+                    <table class="scoretable" id="scoreTable">
+                        <tr>
+                            <th></th>
+                            <th class="player1Name">Player 1</th>
+                            <th class="player2Name">Player 2</th>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+    
+            <div>
+                <section class="problem">
+                    <p id="question"></p>
+                    <p class="round" id="gameRound"></p>
+                </section>
+                <section>
+                    <p id="turn"></p>
+                </section>
+                
+                <section class="endgame">
+                    <h1>Game Finished!</h1>
+                    <h1 id="gameMessage"></h1>
+                    <span class="button" onclick="clientConnectionManager.requestRestartGame()">
+                        <span class="icon">R</span>
+                    </span>
+                </section>
+
+                <section class="gameboard">
+                    <div class="cardcontainer">
+                        <div class="playercard">
+                            <div class="frontside">
+                                <span class="player1Name">Player 1 </span>
+                            </div>
+                            <div class="backside">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cardcontainer">
+                        <div class="playercard">
+                            <div class ="frontside">
+                                <span class="player2Name">Player 2 </span>
+                            </div>
+                            <div class="backside">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="gamebuttons">
+                    <span class="button" onclick="clientConnectionManager.requestUpdateGameState('cooperate')">Cooperate</span>
+                    <span class="button" onclick="clientConnectionManager.requestUpdateGameState('defect')">Defect</span>
+                </section>
+            </div>
+           
+            <div>
+                <section class="rightpanel">
+                    <table class="payofftable">
+                        <tr>
+                            <th colspan="2"><span class="player1Name">Player 1</span> vs <span class="player2Name">Player 2</span></th>
+                            <th colspan="2" class="player2Name">Player 2</th>
+                        </tr>	
+                        <tr>
+                            <th colspan="2"></th>
+                            <th scope="col">Cooperate</th>  
+                            <th scope="col">Defect</th>
+                        </tr>	
+                        <tr>
+                            <th rowspan="2" class="player1Name">Player 1</th>
+                            <th scope="row">Cooperate</th>
+                            <td id="cooperateCooperate"></td>
+                            <td id="cooperateDefect"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Defect</th>
+                            <td id="defectCooperate"></td>
+                            <td id="defectDefect"></td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </div>
+
+        <div class="login-container">
+            <section id="loginSectionContainer">
+                <h2>Login</h2>
+                <form>
+                    <input id="name" type="text" placeholder="name"> <br>
+                    
+                    <div class="button login" onclick="clientConnectionManager.requestLogin()">
+                        <span class="icon">E</span>
+                    </div>
+                    <!--<div class="button"><span class="icon">Y</span></div> -->
+                </form>
+                <h4 class="alert" id="loginAlert">Please type in name!</h4>
+            </section>
+            
+            <!--
+            <section id="gameOptionsContainer">
+                <h2>Select Game Option</h2>
+                <select id="gameOptions">
+                    <option value="highestScoreOption">Get highest total score</option>
+                    <option value="sameScoreOption">Get same total score(win-win situation)</option>
+                </select>
+                <div class="button login" onclick="game.getRoom()">
+                    Play
+                </div>
+            </section>
+            -->
+        </div>
+
+        <div class="room-browser">
+            <section id="roomOptionsContainer">
+                <h2 id="roomHeading">Select Room to play</h2>
+                
+                <div id="roomBrowser">
+                    <p>testing</p>
+                    <p>testing</p>
+                    <p>testing</p>
+                    <p>testing</p>
+                    <p>testing</p>
+                    <p>testing</p>
+                    <p>testing</p>
+                    <p>testing</p>
+                    <p>testing</p>
+                    
+                </div>
+
+                <div id="createJoinButtons" class="room-buttons">
+                    <div class="button login" onclick="clientConnectionManager.requestNewRoom()" title="Create Room">
+                        <span class="icon">C</span>
+                    </div>
+                    <div class="button login" onclick="clientConnectionManager.requestJoinRoom()"  title="Join Room">
+                        <span class="icon">J</span>
+                    </div>
+                </div>
+
+                <div id="startLeaveButtons" class="room-buttons">
+                    <div class="button login" onclick="clientConnectionManager.requestStartGame()" title="Start game">
+                        <span class="icon">P</span>
+                    </div>
+                    <div class="button login" onclick="clientConnectionManager.requestLeaveRoom()"  title="Leave room">
+                        <span class="icon">L</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

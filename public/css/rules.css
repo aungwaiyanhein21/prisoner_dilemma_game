@@ -1,0 +1,33 @@
+body{	
+    font-family:Calibri, sans-serif;
+    background:#7E827A;
+	/*width:100%;*/
+	color: white;
+}
+
+h1, h2
+{	font-family:"Century Gothic",sans-serif;
+	font-weight:normal;
+	width:100%;
+	text-align: center;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	/*background-color: red;*/
+}
+
+.container > section {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	
+	width: 60%;
+	padding: 1ex;
+
+	/*background-color: green;*/
+}
