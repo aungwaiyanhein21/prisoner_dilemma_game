@@ -1,24 +1,15 @@
 # Prisoner's Dilemma Game
 
-
-<img src="images/deal.png" width=100% />
-
-
-<hr>
-
-## Flow
-
-
-<hr>
-
-## Summary
 <p>
     A two players card flipping game where each player can either cooperate or defect for each question.
 </p>
 
+<img src="images/prisoner_dilemma.gif" width=100% />
+
+
 <hr>
 
-## Why build it?
+## Motivation
 <p>
     After taking a psychology class, I am interested in the concept of Prisoner's Dilemma. It is a situation in which individuals would choose less optimal outcome due to tempting incentive for an individual even though the outcome is much better if they have cooperated.
 </p>

@@ -3,7 +3,7 @@
 var fs = require("fs");
 var users=require("./users");
 
-const USERS_FILE_NAME = "db/users.json";
+const USERS_FILE_NAME = "./db/users.json";
 
 function getUsers ()
 {
